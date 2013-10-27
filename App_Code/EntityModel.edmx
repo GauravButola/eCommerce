@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eCommerceDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="eCommerceDBModelStoreContainer">
+          <EntitySet Name="Cart" EntityType="eCommerceDBModel.Store.Cart" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="eCommerceDBModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="eCommerceDBModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Feature" EntityType="eCommerceDBModel.Store.Feature" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MetaFeature" EntityType="eCommerceDBModel.Store.MetaFeature" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="eCommerceDBModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="eCommerceDBModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Review" EntityType="eCommerceDBModel.Store.Review" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Category_Product" Association="eCommerceDBModel.Store.FK_Category_Product">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Cart" Association="eCommerceDBModel.Store.FK_Customer_Cart">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Order" Association="eCommerceDBModel.Store.FK_Customer_Order">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Review" Association="eCommerceDBModel.Store.FK_Customer_Review">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetaFeature_Feature" Association="eCommerceDBModel.Store.FK_MetaFeature_Feature">
+            <End Role="MetaFeature" EntitySet="MetaFeature" />
+            <End Role="Feature" EntitySet="Feature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Cart" Association="eCommerceDBModel.Store.FK_Product_Cart">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Order" Association="eCommerceDBModel.Store.FK_Product_Order">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Review" Association="eCommerceDBModel.Store.FK_Product_Review">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductID_Feature" Association="eCommerceDBModel.Store.FK_ProductID_Feature">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Feature" EntitySet="Feature" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CategoryDescription" Type="text" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="sex" Type="varchar" MaxLength="10" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ContactNumber" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="UserType" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="FeatureID" />
+          </Key>
+          <Property Name="FeatureID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MetaFeatureID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="FeatureDescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MetaFeature">
+          <Key>
+            <PropertyRef Name="MetaFeatureID" />
+          </Key>
+          <Property Name="MetaFeatureID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FeatureName" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="DateOrdered" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="ProductDescription" Type="text" />
+          <Property Name="ProductImageURL" Type="varchar" MaxLength="255" />
+          <Property Name="ProductPrice" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="CategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="ReviewTitle" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="ReviewDescription" Type="text" Nullable="false" />
+          <Property Name="ReviewDate" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Category_Product">
+          <End Role="Category" Type="eCommerceDBModel.Store.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="eCommerceDBModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Cart">
+          <End Role="Customer" Type="eCommerceDBModel.Store.Customer" Multiplicity="1" />
+          <End Role="Cart" Type="eCommerceDBModel.Store.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Order">
+          <End Role="Customer" Type="eCommerceDBModel.Store.Customer" Multiplicity="1" />
+          <End Role="Order" Type="eCommerceDBModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Review">
+          <End Role="Customer" Type="eCommerceDBModel.Store.Customer" Multiplicity="1" />
+          <End Role="Review" Type="eCommerceDBModel.Store.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetaFeature_Feature">
+          <End Role="MetaFeature" Type="eCommerceDBModel.Store.MetaFeature" Multiplicity="1" />
+          <End Role="Feature" Type="eCommerceDBModel.Store.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetaFeature">
+              <PropertyRef Name="MetaFeatureID" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="MetaFeatureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Cart">
+          <End Role="Product" Type="eCommerceDBModel.Store.Product" Multiplicity="1" />
+          <End Role="Cart" Type="eCommerceDBModel.Store.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Order">
+          <End Role="Product" Type="eCommerceDBModel.Store.Product" Multiplicity="1" />
+          <End Role="Order" Type="eCommerceDBModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Review">
+          <End Role="Product" Type="eCommerceDBModel.Store.Product" Multiplicity="1" />
+          <End Role="Review" Type="eCommerceDBModel.Store.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductID_Feature">
+          <End Role="Product" Type="eCommerceDBModel.Store.Product" Multiplicity="1" />
+          <End Role="Feature" Type="eCommerceDBModel.Store.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eCommerceDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="eCommerceDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="eCommerceDBModel.Category" />
+          <EntitySet Name="Customers" EntityType="eCommerceDBModel.Customer" />
+          <EntitySet Name="Features" EntityType="eCommerceDBModel.Feature" />
+          <EntitySet Name="MetaFeatures" EntityType="eCommerceDBModel.MetaFeature" />
+          <EntitySet Name="Products" EntityType="eCommerceDBModel.Product" />
+          <AssociationSet Name="FK_Category_Product" Association="eCommerceDBModel.FK_Category_Product">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetaFeature_Feature" Association="eCommerceDBModel.FK_MetaFeature_Feature">
+            <End Role="MetaFeature" EntitySet="MetaFeatures" />
+            <End Role="Feature" EntitySet="Features" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductID_Feature" Association="eCommerceDBModel.FK_ProductID_Feature">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Feature" EntitySet="Features" />
+          </AssociationSet>
+          <EntitySet Name="Carts" EntityType="eCommerceDBModel.Cart" />
+          <AssociationSet Name="FK_Customer_Cart" Association="eCommerceDBModel.FK_Customer_Cart">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Cart" Association="eCommerceDBModel.FK_Product_Cart">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <EntitySet Name="Orders" EntityType="eCommerceDBModel.Order" />
+          <AssociationSet Name="FK_Customer_Order" Association="eCommerceDBModel.FK_Customer_Order">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Order" Association="eCommerceDBModel.FK_Product_Order">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <EntitySet Name="Reviews" EntityType="eCommerceDBModel.Review" />
+          <AssociationSet Name="FK_Customer_Review" Association="eCommerceDBModel.FK_Customer_Review">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Review" Association="eCommerceDBModel.FK_Product_Review">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CategoryDescription" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Products" Relationship="eCommerceDBModel.FK_Category_Product" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="sex" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Carts" Relationship="eCommerceDBModel.FK_Customer_Cart" FromRole="Customer" ToRole="Cart" />
+          <NavigationProperty Name="Orders" Relationship="eCommerceDBModel.FK_Customer_Order" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="Reviews" Relationship="eCommerceDBModel.FK_Customer_Review" FromRole="Customer" ToRole="Review" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="FeatureID" />
+          </Key>
+          <Property Name="FeatureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MetaFeatureID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="FeatureDescription" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="MetaFeature" Relationship="eCommerceDBModel.FK_MetaFeature_Feature" FromRole="Feature" ToRole="MetaFeature" />
+          <NavigationProperty Name="Product" Relationship="eCommerceDBModel.FK_ProductID_Feature" FromRole="Feature" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="MetaFeature">
+          <Key>
+            <PropertyRef Name="MetaFeatureID" />
+          </Key>
+          <Property Name="MetaFeatureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeatureName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Features" Relationship="eCommerceDBModel.FK_MetaFeature_Feature" FromRole="MetaFeature" ToRole="Feature" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ProductImageURL" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ProductPrice" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="Discount" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="eCommerceDBModel.FK_Category_Product" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Features" Relationship="eCommerceDBModel.FK_ProductID_Feature" FromRole="Product" ToRole="Feature" />
+          <NavigationProperty Name="Carts" Relationship="eCommerceDBModel.FK_Product_Cart" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="Orders" Relationship="eCommerceDBModel.FK_Product_Order" FromRole="Product" ToRole="Order" />
+          <NavigationProperty Name="Reviews" Relationship="eCommerceDBModel.FK_Product_Review" FromRole="Product" ToRole="Review" />
+        </EntityType>
+        <Association Name="FK_Category_Product">
+          <End Role="Category" Type="eCommerceDBModel.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="eCommerceDBModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetaFeature_Feature">
+          <End Role="MetaFeature" Type="eCommerceDBModel.MetaFeature" Multiplicity="1" />
+          <End Role="Feature" Type="eCommerceDBModel.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetaFeature">
+              <PropertyRef Name="MetaFeatureID" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="MetaFeatureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductID_Feature">
+          <End Role="Product" Type="eCommerceDBModel.Product" Multiplicity="1" />
+          <End Role="Feature" Type="eCommerceDBModel.Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Type="Int32" Name="CartID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="eCommerceDBModel.FK_Customer_Cart" FromRole="Cart" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="eCommerceDBModel.FK_Product_Cart" FromRole="Cart" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Customer_Cart">
+          <End Type="eCommerceDBModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="eCommerceDBModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Cart">
+          <End Type="eCommerceDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="eCommerceDBModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Type="Int32" Name="OrderID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="DateTime" Name="DateOrdered" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="eCommerceDBModel.FK_Customer_Order" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="eCommerceDBModel.FK_Product_Order" FromRole="Order" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Customer_Order">
+          <End Type="eCommerceDBModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="eCommerceDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Order">
+          <End Type="eCommerceDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="eCommerceDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Type="Int32" Name="ReviewID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="Int32" Name="Rating" />
+          <Property Type="String" Name="ReviewTitle" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReviewDescription" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ReviewDate" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="eCommerceDBModel.FK_Customer_Review" FromRole="Review" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="eCommerceDBModel.FK_Product_Review" FromRole="Review" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Customer_Review">
+          <End Type="eCommerceDBModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="eCommerceDBModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Review">
+          <End Type="eCommerceDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="eCommerceDBModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eCommerceDBModelStoreContainer" CdmEntityContainer="eCommerceDBEntities">
+          <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="eCommerceDBModel.Category"><MappingFragment StoreEntitySet="Category">
+            <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+            <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Customers"><EntityTypeMapping TypeName="eCommerceDBModel.Customer"><MappingFragment StoreEntitySet="Customer">
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+            <ScalarProperty Name="sex" ColumnName="sex" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+            <ScalarProperty Name="UserType" ColumnName="UserType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Features"><EntityTypeMapping TypeName="eCommerceDBModel.Feature"><MappingFragment StoreEntitySet="Feature">
+            <ScalarProperty Name="FeatureID" ColumnName="FeatureID" />
+            <ScalarProperty Name="MetaFeatureID" ColumnName="MetaFeatureID" />
+            <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            <ScalarProperty Name="FeatureDescription" ColumnName="FeatureDescription" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MetaFeatures"><EntityTypeMapping TypeName="eCommerceDBModel.MetaFeature"><MappingFragment StoreEntitySet="MetaFeature">
+            <ScalarProperty Name="MetaFeatureID" ColumnName="MetaFeatureID" />
+            <ScalarProperty Name="FeatureName" ColumnName="FeatureName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Products"><EntityTypeMapping TypeName="eCommerceDBModel.Product"><MappingFragment StoreEntitySet="Product">
+            <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+            <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+            <ScalarProperty Name="ProductImageURL" ColumnName="ProductImageURL" />
+            <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+            <ScalarProperty Name="Discount" ColumnName="Discount" />
+            <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="eCommerceDBModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="eCommerceDBModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="eCommerceDBModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+                <ScalarProperty Name="ReviewDescription" ColumnName="ReviewDescription" />
+                <ScalarProperty Name="ReviewTitle" ColumnName="ReviewTitle" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model" ZoomLevel="86">
+        <EntityTypeShape EntityType="eCommerceDBModel.Category" Width="1.5" PointX="5.375" PointY="1.875" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="eCommerceDBModel.Customer" Width="1.5" PointX="0.5" PointY="4" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="eCommerceDBModel.Feature" Width="1.5" PointX="3" PointY="0.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="eCommerceDBModel.MetaFeature" Width="1.5" PointX="0.5" PointY="0.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="eCommerceDBModel.Product" Width="1.5" PointX="3" PointY="1.875" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="eCommerceDBModel.FK_Category_Product" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.375" PointY="2.075" />
+          <ConnectorPoint PointX="4.5" PointY="2.075" />
+        </AssociationConnector>
+        <AssociationConnector Association="eCommerceDBModel.FK_MetaFeature_Feature" ManuallyRouted="false">
+          <ConnectorPoint PointX="2" PointY="0.7" />
+          <ConnectorPoint PointX="3" PointY="0.7" />
+        </AssociationConnector>
+        <AssociationConnector Association="eCommerceDBModel.FK_ProductID_Feature" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="1.875" />
+          <ConnectorPoint PointX="3.75" PointY="0.9" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="eCommerceDBModel.Cart" Width="1.5" PointX="2.125" PointY="2.875" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="eCommerceDBModel.FK_Customer_Cart" >
+          <ConnectorPoint PointX="2" PointY="4" />
+          <ConnectorPoint PointX="2.125" PointY="3.275" />
+        </AssociationConnector>
+        <AssociationConnector Association="eCommerceDBModel.FK_Product_Cart" >
+          <ConnectorPoint PointX="3.3125" PointY="2.275" />
+          <ConnectorPoint PointX="3.3125" PointY="2.875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="eCommerceDBModel.Order" Width="1.5" PointX="0.5" PointY="1.875" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="eCommerceDBModel.FK_Customer_Order" >
+          <ConnectorPoint PointX="1.2187475" PointY="4" />
+          <ConnectorPoint PointX="1.2187475" PointY="2.275" />
+        </AssociationConnector>
+        <AssociationConnector Association="eCommerceDBModel.FK_Product_Order" >
+          <ConnectorPoint PointX="3" PointY="2.075" />
+          <ConnectorPoint PointX="2" PointY="2.075" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="eCommerceDBModel.Review" Width="1.5" PointX="5.25" PointY="3.875" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="eCommerceDBModel.FK_Customer_Review" >
+          <ConnectorPoint PointX="2" PointY="4.168752500000001" />
+          <ConnectorPoint PointX="5.25" PointY="4.168752500000001" />
+        </AssociationConnector>
+        <AssociationConnector Association="eCommerceDBModel.FK_Product_Review" >
+          <ConnectorPoint PointX="4.09375" PointY="2.275" />
+          <ConnectorPoint PointX="4.09375" PointY="3.9906237499999997" />
+          <ConnectorPoint PointX="5.25" PointY="3.9906237499999997" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

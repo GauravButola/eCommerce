@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/HeaderFooter.master" AutoEventWireup="true"
+    CodeFile="AdminMaserPage.master.cs" Inherits="Admin_AdminMaserPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div class="userNav">
+        <div class="navContent adminNavTitle">
+            <div class="navTitle">
+                Manage Products
+            </div>
+            <asp:HyperLink ID="hlAddProduct" NavigateUrl="~/Admin/addProduct.aspx" runat="server">Add New Product</asp:HyperLink><br />
+            <asp:HyperLink ID="hlListProducts" NavigateUrl="~/Admin/listProducts.aspx" runat="server">List Products</asp:HyperLink><br />
+            <asp:HyperLink ID="hlAddFeatures" NavigateUrl="~/Admin/addFeatures.aspx" runat="server">Add Features</asp:HyperLink>
+        </div>
+        <div class="navContent adminNavTitle">
+            <div class="navTitle">
+                Manage Users
+            </div>
+            <asp:HyperLink ID="hlListUsers" NavigateUrl="~/Admin/listUsers.aspx" runat="server">List Users</asp:HyperLink> <br />
+            <asp:HyperLink ID="hlUpdateUser" NavigateUrl="~/Admin/updateUser.aspx" runat="server">Update Users</asp:HyperLink>
+        </div>
+    </div>
+    <div class="cms">
+       Content Management Panels  
+    </div>
+    <div class="accountMain">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</asp:Content>

@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/HeaderFooter.master" AutoEventWireup="true"
+    CodeFile="ProfileMasterPage.master.cs" Inherits="ProfileMasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div class="userNav">
+        <asp:Panel ID="Panel1" runat="server" Visible="False">
+            <div class="navContent adminNavTitle">
+                <div class="navTitle">
+                    ADMIN
+                </div>
+                <asp:HyperLink ID="hlAdmin" NavigateUrl="~/Admin/admin.aspx" runat="server">Admin Panel</asp:HyperLink><br />
+            </div>
+        </asp:Panel>
+        <div class="navContent">
+            <div class="navTitle">
+                Account
+            </div>
+            <asp:HyperLink ID="hlProfile" NavigateUrl="~/profile.aspx" runat="server">My Profile</asp:HyperLink><br />
+            <asp:HyperLink ID="hlChangePassword" NavigateUrl="~/changePassword.aspx" runat="server">Change Password</asp:HyperLink>
+        </div>
+        <div class="navContent">
+            <div class="navTitle">
+                ORDERS
+            </div>
+            <asp:HyperLink ID="hlMyOrders" NavigateUrl="~/myOrders.aspx" runat="server">My Orders</asp:HyperLink><br />
+        </div>
+    </div>
+    <div class="accountMain">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</asp:Content>

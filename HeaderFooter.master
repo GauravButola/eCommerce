@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="HeaderFooter.master.cs"
+    Inherits="HeaderFooter" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>eCommerce | Online Shopping</title>
+    <link rel="Stylesheet" href="CSS/main.css" />
+    <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="Scripts/script.js"></script>
+    <script type="text/javascript">
+        var showNotification = function (title, description) {
+            $('.notifyTitle').text(title);
+            $('.notificationDetail').text(description);
+            $('.notification').fadeToggle(2000).delay(4000).fadeToggle(2000);
+        };
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="True">
+    </asp:ScriptManager>
+    <div id="header">
+        <div class="notification">
+            <div class="notifyTitle">
+            </div>
+            <div class="notificationDetail">
+            </div>
+        </div>
+        <div id="header-content">
+            <asp:HyperLink ID="HyperLink1" NavigateUrl="~/home.aspx" runat="server">
+                <asp:Image ImageUrl="~/Site_data/site_images/eCommerce_Logo_yellow.png" alt="Site logo"
+                    ID="logo" runat="server" />
+            </asp:HyperLink>
+            <asp:TextBox ID="txtSearch" placeholder="Search for products" x-webkit-speech autocomplete="off"
+                runat="server"></asp:TextBox>
+            <asp:Button ID="btnSearch" runat="server" Text="SEARCH" OnClick="btnSearch_Click"
+                CausesValidation="False" />
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
+                    <div class="searchList">
+                        <div class="searchItem">
+                            <asp:HyperLink ID="HyperLink9" NavigateUrl="#" runat="server">
+                                <div class="searchItemImage">
+                                    <asp:Image ImageUrl="~/Site_data/nexus7.jpeg" ID="Image1" runat="server" />
+                                </div>
+                                <div class="searchItemName">
+                                    <asp:Label ID="lblPrice" runat="server" Text="Product title"></asp:Label>
+                                </div>
+                                <div class="searchItemPrice">
+                                    <asp:Label ID="Label1" runat="server" Text="Rs. 546"></asp:Label>
+                                </div>
+                            </asp:HyperLink>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+            <asp:LinkButton ID="lnkSignUpProfile" runat="server" PostBackUrl="signup.aspx" CausesValidation="False">Signup</asp:LinkButton>
+            <span style="color: yellow">|</span>
+            <asp:LinkButton ID="lnkLogInLogOut" runat="server" PostBackUrl="login.aspx" CausesValidation="False">Login</asp:LinkButton>
+        </div>
+    </div>
+    <div class="stickyNav">
+        <span class="navLink">
+            <asp:HyperLink ID="HyperLink2" NavigateUrl="~/search.aspx?category=books" runat="server">BOOKS</asp:HyperLink>
+        </span><span class="navLink">
+            <asp:HyperLink ID="HyperLink3" NavigateUrl="~/search.aspx?category=laptop" runat="server">LAPTOPS</asp:HyperLink>
+        </span><span class="navLink">
+            <asp:HyperLink ID="HyperLink4" NavigateUrl="~/search.aspx?category=clothes" runat="server">CLOTHES</asp:HyperLink>
+        </span><span class="navLink">
+            <asp:HyperLink ID="HyperLink5" NavigateUrl="~/search.aspx?category=mobile" runat="server">MOBILES</asp:HyperLink>
+        </span><span class="navLink">
+            <asp:HyperLink ID="HyperLink6" NavigateUrl="~/search.aspx?category=watch" runat="server">WATCHES</asp:HyperLink>
+        </span><span class="navLink">
+            <asp:HyperLink ID="HyperLink7" NavigateUrl="~/search.aspx?category=game" runat="server">GAMES</asp:HyperLink>
+        </span><span class="navLink">
+            <asp:HyperLink ID="HyperLink8" NavigateUrl="~/search.aspx?category=tablet" runat="server">TABLETS</asp:HyperLink>
+        </span>
+        <div class="cart">
+            <asp:HyperLink ID="hlCartCount" NavigateUrl="~/order.aspx" runat="server">
+                Cart(<asp:Label ID="lblCartCount" runat="server" Text="lblCartCount">0</asp:Label>)</asp:HyperLink>
+        </div>
+    </div>
+    <div id="site-wrapper">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="authorDetails"><center>
+            Developed by <a href="http://butola.com">Gaurav Butola</a> | Enrollment No. 095061546 | Contact : 9716770331 | <a href="http://butola.com">Butola.com</a></center>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

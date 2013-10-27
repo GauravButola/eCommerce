@@ -1,0 +1,699 @@
+﻿*
+{
+    padding: 0;
+    margin: 0;
+    font-family: helvetica;
+}
+
+body
+{
+    background-image: url('../Site_data/site_images/site_pattern.png');
+}
+
+a
+{
+    color: #666;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover
+{
+    text-decoration: underline;
+    color: #2271b2;
+}
+
+#site-wrapper
+{
+    width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    background: white;
+    padding-bottom:100px;
+    min-height:450px;
+}
+
+#header
+{
+    background: #005387;
+}
+
+#header-content
+{
+    width: 1000px;
+    margin: auto;
+}
+
+#header-content input[type="text"]
+{
+    width: 400px;
+    height: 35px;
+    margin: 10px 0 10px 20px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid black;
+    padding: 0 5px 0 5px;
+}
+
+#header-content input[type="submit"]
+{
+    width: 100px;
+    height: 35px;
+    margin: 10px 20px 10px -5px;
+    background: #fdd922;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #e0bc27;
+    font-weight: bold;
+}
+
+#header-content input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #e0bc27;
+}
+
+#header-content a
+{
+    color: White;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+#logo
+{
+    width: 150px;
+    height: 35px;
+    margin-top: 10px;
+    float: left;
+}
+
+#footer
+{
+    clear:both;
+    overflow:hidden;
+    background: #005387;
+    min-height: 50px;  
+    color:#CCD4D5;
+    font-size:12px;
+}
+
+.authorDetails
+{
+    clear:both;
+    width: 1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.authorDetails a
+{
+    color:White;
+}
+
+.authorDetails a:hover
+{
+    text-decoration:underline;
+}
+
+.searchList
+{
+    width: 410px;
+    margin-left: 182px;
+    background: white;
+    position:absolute;
+    top: 46px;
+}
+
+.searchItem 
+{
+    height:55px;
+    box-shadow: 1px 1px 5px gray;
+}
+.searchItem:hover
+{
+    background: #f5f5f5;
+}
+
+.searchItemImage img
+{
+    float:left;
+    margin-left: 30px;
+    max-height:40px;
+}
+
+.searchItemName
+{
+    font-size: 15px;
+    color: #333;
+    margin-left: 70px;
+    margin-top: 12px;
+}
+
+.searchItemPrice
+{
+    color:#CC3300;
+    margin: 10px 0 0 70px;
+    font-weight: bold;
+}
+
+/*Homepage css starts*/
+
+.main 
+{
+    width: 750px;
+    float: left;
+}
+
+.sideCard
+{
+    float: left;
+    margin: 5px 5px 30px 2px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 1px 1px 5px gray;
+    font-size: 14px;
+    border-top: 25px solid #3C9DD2;
+}
+
+.sideCard img 
+{
+   width: 100px;
+}
+
+.sideCard span
+{
+    font-weight: bold;;
+}
+
+.banner
+{
+    width: 730px;
+    height:300px;
+    overflow: hidden;
+}
+
+.BannerContainer 
+{
+    width: 2200px;
+}
+
+.detail
+{
+   display: inline-block;
+   width: 243px;
+   height: 40px;
+   color: White;
+   background:#333; 
+   text-align:center;
+   border-left: 1px solid white;
+   border-right:1px solid black;
+   padding-top: 20px;
+}
+
+.detail:hover 
+{
+    cursor: pointer;
+    color: black;
+    background:#fff;
+    border-bottom: 4px solid #fdd922
+}
+
+.categories 
+{   
+    overflow: auto;
+}
+
+.productShowcase 
+{   
+    width: 220px;
+    margin: 15px;
+    float:left;
+    text-align: center;
+    box-shadow: 5px 5px 15px gray;
+    min-height: 280px;
+}
+
+.productShowcase:hover 
+{
+    box-shadow: 5px 5px 40px gray;
+}
+
+.showcaseCategory 
+{
+    background: #3C9DD2;
+    color: White;
+    height: 30px;
+    font-weight: bold;
+    font-size: 14px;
+}   
+
+.showcaseImage img
+{
+    max-width: 100%;
+    height: 200px;
+}
+
+.showcaseTitle
+{
+    padding: 5px;
+    font-weight: bold;
+}
+
+.showcaseTitle a 
+{   
+    text-decoration: none;
+    color: #333;
+}
+
+.showcaseTitle a:hover
+{   
+    text-decoration: underline;
+    color: #2271b2;
+}
+
+.showcaseFooter 
+{
+    background: #EBEBEB;
+}
+
+.showcasePrice
+{ 
+    padding: 5px;
+    float: left;
+    font-weight: bold;
+}
+
+.buyLink a
+{
+    float: right;
+    text-decoration: none;
+    padding: 5px 15px 5px 5px;
+    background: #FF6666;
+    color: white;
+}
+
+.leftButton input[type="submit"], .rightButton input[type="submit"]
+{
+    height: 100%;
+    width: 20px;
+    background: #fdd922;
+    border: 1px solid #e0bc27;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.leftButton input[type="submit"]:hover, .rightButton input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #e0bc27;
+}
+
+.leftButton input[type="submit"]
+{
+    float:left;
+}
+
+.rightButton input[type="submit"]
+{
+    float:right;
+}
+
+/*Search page starts here.*/
+.left_sidebar
+{
+    float: left;
+    width: 200px;
+    border-right: 1px solid black;
+}
+
+.search_page
+{
+    float:left;
+    background: white;
+}
+
+.productCard
+{
+    text-align : center;
+    width: 200px;
+    height: 250px;
+    padding: 5px;
+    border: 1px solid black;
+    float:left;
+    margin: 5px;
+}
+
+.productImage 
+{   
+    max-width: 200px;
+    max-height:200px; 
+}
+
+
+
+.productPrice
+{
+    font-weight: bold;
+}
+
+/*Signup page style*/
+
+.userForm 
+{
+    border: 2px solid #f5f5f5;
+    padding:2px;
+    width: 500px;
+    margin: auto;
+    margin-top: 50px;
+    background: #f5f5f5;
+    box-shadow: -5px 10px 100px silver;
+}
+.userForm input, .userForm textarea, .userForm select
+{
+    margin: 5px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #dadada;
+    padding: 5px;
+}
+
+.userForm .formContent
+{
+    margin: 20px 50px 25px 25px;
+}
+
+.userForm .formTitle
+{
+    width: 95%;
+    padding:15px;
+    margin: -3px 0 0 -3px;
+    background: #2A80B9;
+    color: White;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus
+{
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+.userForm input[type="submit"]
+{
+    background: #2A80B9;
+    color: White;
+    text-align: center;
+    width: 25%;
+    margin-left: 40%;
+    padding: 10px 20px 10px 20px;
+}
+
+.userForm input[type="submit"]:hover
+{
+    cursor: pointer;
+    color: #e5e5e5
+}
+
+/*User profile page*/
+
+.userNav
+{
+    float: left;
+    width: 200px;
+    margin: 40px 5px 5px 5px;
+    text-align: center;
+}
+
+.navContent
+{
+    margin-top: 20px;
+    background: #f5f5f5;
+    padding: 15px;
+}
+
+.accountMain
+{
+    margin: 10px 5px 5px 5px;
+    width: 70%;
+    float: left;
+}
+
+.navTitle
+{
+    width: 110%;
+    padding:5px;
+    background: #2A80B9;
+    color: White;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin: -15px 0 0 -13px;
+}
+
+.adminNavTitle .navTitle
+{
+    background: #CC3300;
+}
+
+/*Admin panel*/
+.cms
+{
+    width: 100%;
+    padding: 8px 0px 8px 0;
+    margin-top: 15px;
+    background: #005387;
+    color: White;
+    font-weight: bold;
+    text-align: center;
+}
+
+.adminMessage
+{
+    margin: 20px;
+    text-align: justify;
+}
+
+/*addProduct page*/
+
+.formContent input[type="radio"]
+{
+    width: auto;
+    height: auto;
+}
+
+.adminForm
+{
+    margin-top: 10px;
+}
+
+.productImageContainer
+{
+    width: 30%;
+    margin:25px;
+    float: left;
+}
+
+.productImageContainer img
+{
+    max-width: 300px;
+}
+
+.productInfo
+{
+    margin: 25px;
+    width: 60%;
+    float: left;
+    color: #666;
+    line-height: 25px;
+}
+
+.productInfo .title
+{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.price
+{
+    margin: 15px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.buyButton
+{
+    padding: 10px 30px 10px 30px;
+    margin: 10px 20px 10px -5px;
+    background: orange;
+    border-radius: 5px;
+    border: 1px solid #e0bc27; 
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.buyButton:hover
+{
+    cursor: pointer;
+    box-shadow: 1px 1px 5px gray;
+}
+
+.stickyNav
+{
+    width: 1000px;
+    margin:auto;
+    background:#064661;
+    border-radius: 5px;
+    color: White;
+    padding: 10px;
+    font-size: 12px;
+    box-shadow: 1px 5px 5px grey;
+}
+
+.navTop
+{
+    position:fixed;
+    top:0;
+    left: 50%;
+    margin-left: -510px;
+}
+
+.stickyNav a
+{
+    color: White;
+    text-decoration:none;
+}
+.stickyNav a:hover:
+{
+    cursor:pointer;
+}
+
+.navLink
+{
+    padding: 15px;
+}
+
+.cart
+{
+    display:inline-block;
+    float: right;   
+    font-size: 15px;
+}
+
+/*Order page*/
+.cartWizard
+{
+    width: 900px;
+    background: #f5f5f5;
+    margin: 10px;
+}
+
+.cartImageContainer img
+{
+    max-width:100px;
+}
+
+.tbCart
+{
+    border: 2px solid black;
+}
+.reviewContainer
+{
+    margin: 10px;
+    color: #666;
+    overflow:hidden;
+    margin-top:20px;
+}
+.userInfo
+{
+    float:left;
+    width:15%;
+    font-size:12px;
+}
+.reviewContent
+{
+    float:left;
+    width: 70%;
+}
+.reviewTitle
+{
+    font-weight: bold;
+}
+.reviewDetails
+{
+    margin-top: 5px;
+    font-size: 13px;
+    line-height:22px;
+}
+
+.reviewForm
+{
+    margin: 25px 0 60px 0;
+    width: 100%;
+}
+
+.reviewFormTitle
+{
+    cursor:pointer; 
+    height:20px;  
+}
+
+.reviewFormTitle:hover
+{
+    background: #1D6697;
+    color:#e5e5e5;
+}
+
+.reviewFormContent
+{
+    display:none;
+}
+
+/*notification*/
+.notification
+{
+    display:none;
+    background: black;
+    color: White;
+    position:fixed;
+    right:5px;
+    top: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    opacity: 0.8;
+    cursor: pointer;
+    max-width: 220px;
+    line-height:18px;
+    box-shadow: 1px 1px 10px gray;
+}
+.notification:hover
+{
+    opacity: 0.2;
+}
+.notifyTitle
+{
+    color: #e5e5e5
+}
+
+.notificationDetail
+{
+    font-size: 12px;
+    margin-top:12px;
+}
+
+.stickyNav a:hover
+{
+    background:#60798D;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+
+.feedbackContainer
+{
+    position:fixed;
+    top:25%;   
+}
